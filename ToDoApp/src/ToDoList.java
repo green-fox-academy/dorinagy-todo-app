@@ -28,7 +28,7 @@ public class ToDoList {
         }
         int number = 1;
         for (String line : myList) {
-          System.out.println(number + " - " + "[ ]" + line);
+          System.out.println(number + " - " + "[" + " " + "] "  + line);
           number++;
         }
       }
@@ -68,13 +68,26 @@ public class ToDoList {
       }
     } catch (IOException e) {
       e.printStackTrace();
-    } catch (Exception ex) {
-      System.out.println("Unable to remove: index is not a number");
-    }
+      } catch (Exception ex) {
+        System.out.println("Unable to remove: index is not a number");
+        }
   }
   public void checkTasks() {
-    if (args.length == 1) {
-      System.out.println("Unable to check: no index provided");
+    try {
+      Path filePath = Paths.get("../files/data.txt");
+      List<String> checkTask;
+      checkTask = Files.readAllLines(filePath);
+      if (args.length == 1) {
+        System.out.println("Unable to check: no index provided");
+      } else if (Integer.parseInt(args[1]) > checkTask.size()) {
+        System.out.println("Unable to check: index is out of bound");
+        } else {
+          
+      }
+    } catch (IOException e) {
+      e.printStackTrace();
+      } catch (Exception ex) {
+      System.out.println("Unable to check: index is not a number");
     }
   }
 }
