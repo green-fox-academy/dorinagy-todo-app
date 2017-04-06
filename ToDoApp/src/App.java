@@ -9,6 +9,10 @@ public class App {
     ArgumentHandler handler = new ArgumentHandler(args);
     if(args.length == 0) {
       printUsage();
+    } else if(!handler.contains("a") && !handler.contains("l") && !handler.contains("r") && !handler.contains("c")) {
+      System.out.println("Unsupported argument");
+      System.out.println();
+      printUsage();
     }
 
     if(handler.contains("l")) {
@@ -21,12 +25,6 @@ public class App {
 
     if(handler.contains("r")) {
       myToDo.removeToDo();
-    }
-
-    if(!handler.contains("a")) {
-      System.out.println("Unsupported argument");
-      System.out.println();
-      printUsage();
     }
   }
 

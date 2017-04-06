@@ -46,6 +46,7 @@ public class ToDoList {
       try {
         newToDo = Files.readAllLines(filePath);
         newToDo.add(newToDo.size(), args[1]);
+        Files.write(filePath, newToDo);
       } catch(IOException e) {
         e.printStackTrace();
       }
