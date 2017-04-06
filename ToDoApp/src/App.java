@@ -7,24 +7,28 @@ public class App {
   public static void main(String[] args) {
     ToDoList myToDo = new ToDoList(args);
     ArgumentHandler handler = new ArgumentHandler(args);
-    if(args.length == 0) {
+    if (args.length == 0) {
       printUsage();
-    } else if(!handler.contains("a") && !handler.contains("l") && !handler.contains("r") && !handler.contains("c")) {
+    } else if (!handler.contains("a") && !handler.contains("l") && !handler.contains("r") && !handler.contains("c")) {
       System.out.println("Unsupported argument");
       System.out.println();
       printUsage();
     }
 
-    if(handler.contains("l")) {
+    if (handler.contains("l")) {
       myToDo.getToDo();
     }
 
-    if(handler.contains("a")) {
+    if (handler.contains("a")) {
       myToDo.addToDo();
     }
 
-    if(handler.contains("r")) {
+    if (handler.contains("r")) {
       myToDo.removeToDo();
+    }
+
+    if (handler.contains("c")) {
+      myToDo.checkTasks();
     }
   }
 
