@@ -73,6 +73,8 @@ public class ToDoList {
     }
   }
   public void checkTasks() {
-    
+    if (args.length == 1) {
+      System.out.println("Unable to check: no index provided");
+    }
   }
 }
