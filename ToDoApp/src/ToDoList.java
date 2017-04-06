@@ -14,14 +14,18 @@ public class ToDoList {
       List<String> lines = Files.readAllLines(filePath);
       List<String> myList = new ArrayList<>();
 
-      for (String line : lines) {
-        myList.add(line);
-      }
+      if(lines.isEmpty()) {
+        System.out.println("No todos for today! :)");
+      } else {
+        for (String line : lines) {
+          myList.add(line);
+        }
 
-      int number = 1;
-      for(String line : myList) {
-        System.out.println(number + " - " + line);
-        number++;
+        int number = 1;
+        for(String line : myList) {
+          System.out.println(number + " - " + line);
+          number++;
+        }
       }
 
     } catch(Exception e) {
