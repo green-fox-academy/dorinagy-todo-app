@@ -22,6 +22,12 @@ public class App {
     if(handler.contains("r")) {
       myToDo.removeToDo();
     }
+
+    if(!handler.contains("a")) {
+      System.out.println("Unsupported argument");
+      System.out.println();
+      printUsage();
+    }
   }
 
   public static void printUsage() {

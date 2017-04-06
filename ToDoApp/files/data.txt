@@ -1,6 +1,3 @@
 Walk the dog
 Buy milk
 Do homework
-ava.lang.String;@1db9742
-sjskd
-skdkls

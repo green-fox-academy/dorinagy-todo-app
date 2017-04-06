@@ -20,39 +20,36 @@ public class ToDoList {
       Path filePath = Paths.get("../files/data.txt");
       List<String> lines = Files.readAllLines(filePath);
       List<String> myList = new ArrayList<>();
-
       if (lines.isEmpty()) {
         System.out.println("No todos for today! :)");
       } else {
         for (String line : lines) {
           myList.add(line);
         }
-
         int number = 1;
         for (String line : myList) {
           System.out.println(number + " - " + line);
           number++;
         }
       }
-
     } catch (Exception e) {
       System.out.println("Error" + e.getClass());
     }
   }
 
   public void addToDo() {
-    try {
+    if (args.length == 1) {
+      System.out.println("Unable to add: no task provided");
+    } else {
       Path filePath = Paths.get("../files/data.txt");
       List<String> newToDo;
-      if (args.length == 1) {
-        System.out.println("Unable to add: no task provided");
-      } else {
+      try {
         newToDo = Files.readAllLines(filePath);
         newToDo.add(newToDo.size(), args[1]);
-      }
-    } catch(IOException e) {
+      } catch(IOException e) {
         e.printStackTrace();
       }
+    }
   }
 
   public void removeToDo(){
