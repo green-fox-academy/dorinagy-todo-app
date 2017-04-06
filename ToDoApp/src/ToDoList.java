@@ -10,13 +10,13 @@ import java.util.List;
  */
 public class ToDoList {
 
-    public void getFile() {
+  public void getFile() {
     try {
       Path filePath = Paths.get("../files/data.txt");
       List<String> lines = Files.readAllLines(filePath);
       List<String> myList = new ArrayList<>();
 
-      if(lines.isEmpty()) {
+      if (lines.isEmpty()) {
         System.out.println("No todos for today! :)");
       } else {
         for (String line : lines) {
@@ -24,16 +24,17 @@ public class ToDoList {
         }
 
         int number = 1;
-        for(String line : myList) {
+        for (String line : myList) {
           System.out.println(number + " - " + line);
           number++;
         }
       }
 
-    } catch(Exception e) {
+    } catch (Exception e) {
       System.out.println("Error" + e.getClass());
     }
   }
+
   public void addNewTask(String inputString) {
     ToDoList newToDo = new ToDoList();
     try {
