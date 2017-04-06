@@ -1,4 +1,3 @@
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -9,8 +8,13 @@ import java.util.List;
  * Created by Nagy Dóra on 2017.04.06..
  */
 public class ToDoList {
+  String[] args;
 
-  public void getFile() {
+  public ToDoList(String[] args) {
+    this.args = args;
+  }
+
+  public void getToDo() {
     try {
       Path filePath = Paths.get("../files/data.txt");
       List<String> lines = Files.readAllLines(filePath);
@@ -35,15 +39,25 @@ public class ToDoList {
     }
   }
 
-  public void addNewTask(String inputString) {
-    ToDoList newToDo = new ToDoList();
-    try {
-      Path filePath = Paths.get("../files/data.txt");
-      List<String> lines2 = Files.readAllLines(filePath);
-    } catch (IOException e) {
-      e.printStackTrace();
+  public void addToDo(String[] args) {
+    if (args.length == 1) {
+      System.out.println("Unable to add: no task provided");
+    } else {
+      try {
+        Path filePath = Paths.get("../files/data.txt");
+        List<String> newToDo;
+        newToDo = Files.readAllLines(filePath);
+        newToDo.add(newToDo.size(), args[1]);
+        Files.write(filePath, newToDo);
+      } catch (Exception e) {
+        System.out.println("Error" + e.getClass());
+      }
     }
-    List<String> newList = new ArrayList<>();
-    newList.add(3, inputString);
+  }
+
+  public void removeToDo(String[] args){
+    if (args.length == 1) {
+      System.out.println("Unable to remove: no index provided");
+    }
   }
 }
