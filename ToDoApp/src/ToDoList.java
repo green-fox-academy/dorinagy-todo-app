@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -8,7 +9,8 @@ import java.util.List;
  * Created by Nagy Dóra on 2017.04.06..
  */
 public class ToDoList {
-  public void getFile() {
+
+    public void getFile() {
     try {
       Path filePath = Paths.get("../files/data.txt");
       List<String> lines = Files.readAllLines(filePath);
@@ -31,5 +33,16 @@ public class ToDoList {
     } catch(Exception e) {
       System.out.println("Error" + e.getClass());
     }
+  }
+  public void addNewTask(String inputString) {
+    ToDoList newToDo = new ToDoList();
+    try {
+      Path filePath = Paths.get("../files/data.txt");
+      List<String> lines2 = Files.readAllLines(filePath);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    List<String> newList = new ArrayList<>();
+    newList.add(3, inputString);
   }
 }
