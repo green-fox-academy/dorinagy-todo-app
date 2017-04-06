@@ -16,11 +16,11 @@ public class App {
     }
 
     if(handler.contains("a")) {
-      myToDo.addToDo(args);
+      myToDo.addToDo();
     }
 
     if(handler.contains("r")) {
-      myToDo.removeToDo(args);
+      myToDo.removeToDo();
     }
   }
 

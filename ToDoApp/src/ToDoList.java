@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -39,25 +40,39 @@ public class ToDoList {
     }
   }
 
-  public void addToDo(String[] args) {
-    if (args.length == 1) {
-      System.out.println("Unable to add: no task provided");
-    } else {
-      try {
-        Path filePath = Paths.get("../files/data.txt");
-        List<String> newToDo;
+  public void addToDo() {
+    try {
+      Path filePath = Paths.get("../files/data.txt");
+      List<String> newToDo;
+      if (args.length == 1) {
+        System.out.println("Unable to add: no task provided");
+      } else {
         newToDo = Files.readAllLines(filePath);
         newToDo.add(newToDo.size(), args[1]);
-        Files.write(filePath, newToDo);
-      } catch (Exception e) {
-        System.out.println("Error" + e.getClass());
       }
-    }
+    } catch(IOException e) {
+        e.printStackTrace();
+      }
   }
 
-  public void removeToDo(String[] args){
-    if (args.length == 1) {
-      System.out.println("Unable to remove: no index provided");
+  public void removeToDo(){
+    try {
+      Path filePath = Paths.get("../files/data.txt");
+      List<String> removeToDo;
+      removeToDo = Files.readAllLines(filePath);
+      if(args.length == 1) {
+        System.out.println("Unable to remove: no index provided");
+      } else if(Integer.parseInt(args[1]) > removeToDo.size()) {
+        System.out.println("Unable to remove: index is out of bound");
+      } else {
+        removeToDo.remove(Integer.parseInt(args[1]) - 1);
+        Files.write(filePath, removeToDo);
+      }
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+        catch (Exception ex) {
+      System.out.println("Unable to remove: index is not a number");
     }
   }
 }
