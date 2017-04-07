@@ -28,7 +28,7 @@ public class ToDoList {
         }
         int number = 1;
         for (String line : myList) {
-          System.out.println(number + " - " + "[" + " " + "] "  + line);
+          System.out.println(number + " - " + line);
           number++;
         }
       }
@@ -45,7 +45,7 @@ public class ToDoList {
       List<String> newToDo;
       try {
         newToDo = Files.readAllLines(filePath);
-        newToDo.add(newToDo.size(), args[1]);
+        newToDo.add(newToDo.size(), "[ ]" + args[1]);
         Files.write(filePath, newToDo);
       } catch (IOException e) {
         e.printStackTrace();
@@ -61,11 +61,11 @@ public class ToDoList {
       if (args.length == 1) {
         System.out.println("Unable to remove: no index provided");
       } else if (Integer.parseInt(args[1]) > removeToDo.size()) {
-        System.out.println("Unable to remove: index is out of bound");
-      } else {
-        removeToDo.remove(Integer.parseInt(args[1]) - 1);
-        Files.write(filePath, removeToDo);
-      }
+          System.out.println("Unable to remove: index is out of bound");
+        } else {
+            removeToDo.remove(Integer.parseInt(args[1]) - 1);
+            Files.write(filePath, removeToDo);
+          }
     } catch (IOException e) {
       e.printStackTrace();
       } catch (Exception ex) {
@@ -77,13 +77,17 @@ public class ToDoList {
       Path filePath = Paths.get("../files/data.txt");
       List<String> checkTask;
       checkTask = Files.readAllLines(filePath);
+      String chosenTask;
       if (args.length == 1) {
         System.out.println("Unable to check: no index provided");
       } else if (Integer.parseInt(args[1]) > checkTask.size()) {
-        System.out.println("Unable to check: index is out of bound");
+         System.out.println("Unable to check: index is out of bound");
         } else {
-          
-      }
+            chosenTask = checkTask.get(Integer.parseInt(args[1]) - 1);
+            String checkedTask = chosenTask.replaceFirst(" ", "x");
+            checkTask.set((Integer.parseInt(args[1]) - 1), checkedTask);
+            Files.write(filePath, checkTask);
+          }
     } catch (IOException e) {
       e.printStackTrace();
       } catch (Exception ex) {
