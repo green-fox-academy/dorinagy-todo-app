@@ -1,5 +1,5 @@
 Walk the dog
-Buyxmilk
+Buy milk
 Do homework
 Feed the monkey
-Do the presentation
+[x] skdf

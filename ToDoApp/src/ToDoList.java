@@ -28,7 +28,7 @@ public class ToDoList {
         }
         int number = 1;
         for (String line : myList) {
-          System.out.println(number + " - " + "[ ] " + line);
+          System.out.println(number + " - " + line);
           number++;
         }
       }
@@ -45,7 +45,7 @@ public class ToDoList {
       List<String> newToDo;
       try {
         newToDo = Files.readAllLines(filePath);
-        newToDo.add(newToDo.size(), args[1]);
+        newToDo.add(newToDo.size(), "[ ] " + args[1]);
         Files.write(filePath, newToDo);
       } catch (IOException e) {
         e.printStackTrace();
